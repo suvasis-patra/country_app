@@ -1,7 +1,21 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Landing, SingleCountry } from "./pages";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Landing />,
+  },
+  {
+    path: "/:countryId",
+    element: <SingleCountry />,
+  },
+]);
+
 function App() {
   return (
     <>
-      <h1 className="text-lg">Hi there</h1>
+      <RouterProvider router={router} />
     </>
   );
 }

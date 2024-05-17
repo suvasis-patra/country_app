@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Landing, SingleCountry } from "./pages";
 import { Navbar } from "./components";
+import QueryProvider from "./react-query/QueryProvider";
 
 const router = createBrowserRouter([
   {
@@ -16,8 +17,10 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <Navbar />
-      <RouterProvider router={router} />
+      <QueryProvider>
+        <Navbar />
+        <RouterProvider router={router} />
+      </QueryProvider>
     </>
   );
 }

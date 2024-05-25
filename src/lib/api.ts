@@ -16,3 +16,23 @@ export const getSingleCountry = async (countryName: string) => {
     console.log(error);
   }
 };
+
+export async function getCountries() {
+  try {
+    const response = await getCountryData.get("/all");
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getCountriresByRegion(region: string) {
+  try {
+    const response = await getCountryData.get(`/region/${region}`);
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}

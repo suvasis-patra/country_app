@@ -5,3 +5,4 @@ export { default as SingleCountrySkelton } from "./SingleCountrySkelton";
 export { default as CountryFlag } from "./CountryFlag";
 export { default as CountryInfo } from "./CountryInfo";
 export { default as CountryCard } from "./CountryCard";
+export { default as Wrappper } from "./Wrapper";

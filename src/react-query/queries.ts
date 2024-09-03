@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getCountries, getSingleCountry } from "../lib/api";
+import { getBorderCountries, getCountries, getSingleCountry } from "../lib/api";
 import { QUERY_KEY } from "./queryKeys";
 
 export const useGetSingleCountryData = (countryName: string) => {
@@ -9,9 +9,16 @@ export const useGetSingleCountryData = (countryName: string) => {
   });
 };
 
-export const useGetCountries = () => {
+export const useGetCountries = (region: string | null) => {
   return useQuery({
-    queryKey: [QUERY_KEY.GET_COUNTRIES],
-    queryFn: () => getCountries(),
+    queryKey: [QUERY_KEY.GET_COUNTRIES, region],
+    queryFn: () => getCountries(region),
+  });
+};
+
+export const useGetBorderCountries = (countries: string[]) => {
+  return useQuery({
+    queryKey: [QUERY_KEY.GET_NEIGHBOUR_COUNTRIES],
+    queryFn: () => getBorderCountries(countries),
   });
 };

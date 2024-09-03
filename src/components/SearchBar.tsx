@@ -1,3 +1,4 @@
+import { Search } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -10,15 +11,16 @@ const SearchBar = () => {
   };
   return (
     <form onSubmit={submitHandler} className="md:w-3/4 w-full">
-      <div className="rounded-lg w-full">
+      <div className="rounded-lg border-[1.5px] px-4 w-full flex justify-between items-center">
         <input
           type="search"
           name="search"
-          className="border-[1.5px] focus:outline-none rounded-lg px-4 py-2 text-lg w-full"
+          className="focus:outline-none rounded-lg  py-2 text-lg w-full"
           onChange={(e) => setCountryName(e.target.value)}
           required
           placeholder="search..."
         />
+        <Search />
       </div>
     </form>
   );

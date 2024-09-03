@@ -17,11 +17,22 @@ export const getSingleCountry = async (countryName: string) => {
   }
 };
 
-export async function getCountries() {
+export async function getCountries(region: string | null) {
+  console.log(region);
   try {
-    const response = await getCountryData.get("/all");
-    console.log(response.data);
-    return response.data;
+    if (region) {
+      const response = await getCountryData.get(
+        `/region/${region}?fields=name,flags,region,population,capital`
+      );
+      console.log(response.data);
+      return response.data;
+    } else {
+      const response = await getCountryData.get(
+        "/all?fields=name,flags,region,population,capital"
+      );
+      console.log(response.data);
+      return response.data;
+    }
   } catch (error) {
     console.log(error);
   }
@@ -30,6 +41,19 @@ export async function getCountries() {
 export async function getCountriresByRegion(region: string) {
   try {
     const response = await getCountryData.get(`/region/${region}`);
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getBorderCountries(countries: string[]) {
+  try {
+    const codes = countries.map((coutnry) => coutnry.toLowerCase()).join(",");
+    const response = await getCountryData.get(
+      `alpha?codes=${codes}&fields=name,flags,region,population,capital`
+    );
     console.log(response.data);
     return response.data;
   } catch (error) {

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getBorderCountries, getCountries, getSingleCountry } from "../lib/api";
 import { QUERY_KEY } from "./queryKeys";
+import { SearchParamsType } from "../lib/types";
 
 export const useGetSingleCountryData = (countryName: string) => {
   return useQuery({
@@ -9,10 +10,10 @@ export const useGetSingleCountryData = (countryName: string) => {
   });
 };
 
-export const useGetCountries = (region: string | null) => {
+export const useGetCountries = (params: SearchParamsType) => {
   return useQuery({
-    queryKey: [QUERY_KEY.GET_COUNTRIES, region],
-    queryFn: () => getCountries(region),
+    queryKey: [QUERY_KEY.GET_COUNTRIES, ...Object.values(params)],
+    queryFn: () => getCountries(params),
   });
 };
 

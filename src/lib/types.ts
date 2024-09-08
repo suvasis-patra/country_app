@@ -96,3 +96,10 @@ export interface Country {
     regex: string;
   };
 }
+
+export type SearchParamsType = {
+  region: string | null;
+  lang: string | null;
+  subregion: string | null;
+  currency: string | null;
+};

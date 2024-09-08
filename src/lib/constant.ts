@@ -40,14 +40,13 @@ export const SUBREGIONS = [
 ];
 
 export const CURRENCIES = [
-  "US Dollar",
+  "Dollar",
   "Euro",
   "Japanese Yen",
-  "British Pound Sterling",
+  "Pound",
   "Australian Dollar",
   "Canadian Dollar",
   "Swiss Franc",
-  "Chinese Yuan Renminbi",
   "Hong Kong Dollar",
   "Singapore Dollar",
 ];

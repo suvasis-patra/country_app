@@ -1,5 +1,7 @@
 import axios from "axios";
 import { BASE_URL } from "./constant";
+import { SearchParamsType } from "./types";
+import { createUrl } from "./utils";
 
 export const getCountryData = axios.create({
   baseURL: BASE_URL,
@@ -17,22 +19,19 @@ export const getSingleCountry = async (countryName: string) => {
   }
 };
 
-export async function getCountries(region: string | null) {
-  console.log(region);
+export async function getCountries({
+  currency,
+  region,
+  lang,
+  subregion,
+}: SearchParamsType) {
   try {
-    if (region) {
-      const response = await getCountryData.get(
-        `/region/${region}?fields=name,flags,region,population,capital`
-      );
-      console.log(response.data);
-      return response.data;
-    } else {
-      const response = await getCountryData.get(
-        "/all?fields=name,flags,region,population,capital"
-      );
-      console.log(response.data);
-      return response.data;
-    }
+    console.log(currency, region, lang, subregion);
+    const url = createUrl({ currency, region, lang, subregion });
+    const response = await getCountryData.get(
+      `${url}?fields=name,flags,region,population,capital`
+    );
+    return response.data;
   } catch (error) {
     console.log(error);
   }

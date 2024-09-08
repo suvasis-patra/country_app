@@ -3,7 +3,6 @@ import { CONTINENTS } from "../lib/constant";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const SelectContinent = () => {
-  // console.log(continent);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const initialContinent = searchParams.get("region") || "";
@@ -26,7 +25,7 @@ const SelectContinent = () => {
         className="focus:outline-none"
       >
         <option value="" disabled>
-          select region
+          Select region
         </option>
         {CONTINENTS.map((continent) => (
           <option key={continent} value={continent.toLocaleLowerCase()}>
